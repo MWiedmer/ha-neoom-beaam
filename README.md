@@ -96,3 +96,7 @@ uv venv && uv pip install pytest-homeassistant-custom-component
 Tests run against a mocked BEAAM (`tests/conftest.py`).
 
 API reference: <https://developer.neoom.com/reference/concepts-terms-1> (BEAAM API v2.13).
+
+## License
+
+MIT, see [LICENSE](LICENSE). Not affiliated with neoom.
