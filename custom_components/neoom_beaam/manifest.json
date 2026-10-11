@@ -1,0 +1,14 @@
+{
+  "domain": "neoom_beaam",
+  "name": "neoom BEAAM (local)",
+  "codeowners": [
+    "@MWiedmer"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/MWiedmer/ha-neoom-beaam",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/MWiedmer/ha-neoom-beaam/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Mit dem BEAAM verbinden",
+        "description": "Verwendet ausschliesslich die lokale BEAAM-API, keine Cloud. Wie du den API-Schlüssel (sk_beaam_…) erhältst, steht auf https://neoom.com/developers.",
+        "data": {
+          "host": "Host",
+          "api_key": "API-Schlüssel"
+        },
+        "data_description": {
+          "host": "IP-Adresse oder Hostname des BEAAM, z. B. 192.168.1.28",
+          "api_key": "Lokaler BEAAM-API-Schlüssel, beginnt mit sk_beaam_"
+        }
+      },
+      "reauth_confirm": {
+        "title": "BEAAM erneut authentifizieren",
+        "description": "Der BEAAM unter {host} hat den API-Schlüssel abgelehnt. Gib einen neuen ein.",
+        "data": {
+          "api_key": "API-Schlüssel"
+        }
+      },
+      "reconfigure": {
+        "title": "BEAAM neu konfigurieren",
+        "data": {
+          "host": "Host",
+          "api_key": "API-Schlüssel"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Keine Verbindung zum BEAAM. Prüfe den Host und ob der BEAAM erreichbar ist.",
+      "invalid_auth": "Der API-Schlüssel wurde abgelehnt.",
+      "unknown": "Unerwarteter Fehler, siehe Log."
+    },
+    "abort": {
+      "already_configured": "Dieser BEAAM-Standort ist bereits eingerichtet.",
+      "reauth_successful": "Erneute Authentifizierung erfolgreich.",
+      "reconfigure_successful": "Neukonfiguration erfolgreich.",
+      "wrong_site": "Das ist ein anderer BEAAM-Standort als der eingerichtete."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "BEAAM-Optionen",
+        "data": {
+          "scan_interval": "Abfrageintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "services": {
+    "send_command": {
+      "name": "Befehl senden",
+      "description": "Sendet einen Befehl an ein am BEAAM angeschlossenes Gerät, z. B. TARGET_POWER für eine Batterie oder MAX_CURRENT_CHARGE für eine Ladestation.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Am BEAAM angeschlossenes Gerät (nicht der BEAAM selbst)."
+        },
+        "key": {
+          "name": "Schlüssel",
+          "description": "Datenpunkt-Schlüssel, muss in der Standortkonfiguration steuerbar sein."
+        },
+        "value": {
+          "name": "Wert",
+          "description": "Zu setzender Wert (Zahl, true/false oder Text)."
+        }
+      }
+    },
+    "update_setting": {
+      "name": "Einstellung ändern",
+      "description": "Ändert eine Geräteeinstellung, z. B. OPERATING_MODE_EMS oder GRID_FEED_IN_PRIORITIZATION_TIMES.",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Am BEAAM angeschlossenes Gerät (nicht der BEAAM selbst)."
+        },
+        "key": {
+          "name": "Schlüssel",
+          "description": "Einstellungs-Schlüssel."
+        },
+        "value": {
+          "name": "Wert",
+          "description": "Neuer Wert."
+        }
+      }
+    },
+    "push_states": {
+      "name": "Zustände übermitteln",
+      "description": "Liefert Werte an ein auf connect.neoom.com eingerichtetes 'Generic'-Gerät (z. B. ein Zähler oder eine Wärmepumpe, die der BEAAM nicht selbst auslesen kann).",
+      "fields": {
+        "device_id": {
+          "name": "Gerät",
+          "description": "Das generische Gerät am BEAAM."
+        },
+        "states": {
+          "name": "Zustände",
+          "description": "Zuordnung Datenpunkt-Schlüssel zu Wert, z. B. {\"ACTIVE_POWER\": 1250}."
+        }
+      }
+    }
+  }
+}

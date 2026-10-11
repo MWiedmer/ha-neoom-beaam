@@ -1,0 +1,105 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to your BEAAM",
+        "description": "Uses only the local BEAAM API, no cloud. You can get the API key (sk_beaam_…) as described on https://neoom.com/developers.",
+        "data": {
+          "host": "Host",
+          "api_key": "API key"
+        },
+        "data_description": {
+          "host": "IP address or hostname of the BEAAM, e.g. 192.168.1.28",
+          "api_key": "Local BEAAM API key, starts with sk_beaam_"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate BEAAM",
+        "description": "The BEAAM at {host} rejected the API key. Enter a new one.",
+        "data": {
+          "api_key": "API key"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure BEAAM",
+        "data": {
+          "host": "Host",
+          "api_key": "API key"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the BEAAM. Check the host and that the BEAAM is reachable.",
+      "invalid_auth": "The API key was rejected.",
+      "unknown": "Unexpected error, see the log for details."
+    },
+    "abort": {
+      "already_configured": "This BEAAM site is already configured.",
+      "reauth_successful": "Re-authentication was successful.",
+      "reconfigure_successful": "Reconfiguration was successful.",
+      "wrong_site": "This is a different BEAAM site than the one configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "BEAAM options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
+  "services": {
+    "send_command": {
+      "name": "Send command",
+      "description": "Sends a command to a device connected to the BEAAM, e.g. TARGET_POWER for a battery or MAX_CURRENT_CHARGE for a charging point.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "Device connected to the BEAAM (not the BEAAM itself)."
+        },
+        "key": {
+          "name": "Key",
+          "description": "Data point key, must be controllable in the site configuration."
+        },
+        "value": {
+          "name": "Value",
+          "description": "Value to set (number, true/false or text)."
+        }
+      }
+    },
+    "update_setting": {
+      "name": "Update setting",
+      "description": "Changes a device setting, e.g. OPERATING_MODE_EMS or GRID_FEED_IN_PRIORITIZATION_TIMES.",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "Device connected to the BEAAM (not the BEAAM itself)."
+        },
+        "key": {
+          "name": "Key",
+          "description": "Setting key."
+        },
+        "value": {
+          "name": "Value",
+          "description": "New value."
+        }
+      }
+    },
+    "push_states": {
+      "name": "Push states",
+      "description": "Feeds values into a 'Generic' device configured on connect.neoom.com (e.g. a meter or heat pump that the BEAAM cannot read itself).",
+      "fields": {
+        "device_id": {
+          "name": "Device",
+          "description": "The generic device on the BEAAM."
+        },
+        "states": {
+          "name": "States",
+          "description": "Mapping of data point key to value, e.g. {\"ACTIVE_POWER\": 1250}."
+        }
+      }
+    }
+  }
+}

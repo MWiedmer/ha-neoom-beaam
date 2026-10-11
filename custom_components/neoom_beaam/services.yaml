@@ -1,0 +1,47 @@
+send_command:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: neoom_beaam
+    key:
+      required: true
+      example: TARGET_POWER
+      selector:
+        text:
+    value:
+      required: true
+      example: 5000
+      selector:
+        object:
+
+update_setting:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: neoom_beaam
+    key:
+      required: true
+      example: OPERATING_MODE_EMS
+      selector:
+        text:
+    value:
+      required: true
+      selector:
+        object:
+
+push_states:
+  fields:
+    device_id:
+      required: true
+      selector:
+        device:
+          integration: neoom_beaam
+    states:
+      required: true
+      example: '{"ACTIVE_POWER": 1250, "CURRENT_P1": 1.8}'
+      selector:
+        object:
